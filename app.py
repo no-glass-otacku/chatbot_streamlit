@@ -3,18 +3,30 @@ import streamlit as st
 from openai import AzureOpenAI
 
 # ── 환경 설정 ──────────────────────────────────────────────
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
-endpoint        = os.getenv("ENDPOINT_URL")
-deployment      = os.getenv("DEPLOYMENT_NAME")
-search_endpoint = os.getenv("SEARCH_ENDPOINT")
-search_key      = os.getenv("SEARCH_KEY")
-search_index    = os.getenv("SEARCH_INDEX_NAME")
-subscription_key= os.getenv("AZURE_OPENAI_API_KEY")
+# endpoint        = os.getenv("ENDPOINT_URL")
+# deployment      = os.getenv("DEPLOYMENT_NAME")
+# search_endpoint = os.getenv("SEARCH_ENDPOINT")
+# search_key      = os.getenv("SEARCH_KEY")
+# search_index    = os.getenv("SEARCH_INDEX_NAME")
+# subscription_key= os.getenv("AZURE_OPENAI_API_KEY")
 
-embedding_endpoint = os.getenv("EMBEDDING_ENDPOINT")
-embedding_key = os.getenv("EMBEDDING_KEY")
+# embedding_endpoint = os.getenv("EMBEDDING_ENDPOINT")
+# embedding_key = os.getenv("EMBEDDING_KEY")
+
+import streamlit as st
+
+endpoint         = st.secrets["ENDPOINT_URL"]
+deployment       = st.secrets["DEPLOYMENT_NAME"]
+search_endpoint  = st.secrets["SEARCH_ENDPOINT"]
+search_key       = st.secrets["SEARCH_KEY"]
+search_index     = st.secrets["SEARCH_INDEX_NAME"]
+subscription_key = st.secrets["AZURE_OPENAI_API_KEY"]
+
+embedding_endpoint = st.secrets["EMBEDDING_ENDPOINT"]
+embedding_key = st.secrets["EMBEDDING_KEY"]
 
 client = AzureOpenAI(
     azure_endpoint=endpoint,
